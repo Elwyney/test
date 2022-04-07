@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #eff3f8;
+            font-family: sans-serif;
+            font-family: 'PT Sans', sans-serif;
+        }
+
+        .container {
+            margin: 0 auto;
+            max-width: 900px;
+            padding: 0 30px;
+        }
+
+        img {
+            width: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            height: 100%;
+            transition: 0.7s;
+        }
+
+        .box {
+            position: relative;
+            height: 180px;
+            transition: 0.7s;
+            border-radius: 10px;
+            text-decoration: none;
+            overflow: hidden;
+            display: block;
+        }
+
+        h1 {
+            margin-bottom: 40px;
+        }
+
+        .news {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .after {
+            position: relative;
+            height: 100%;
+            transition: 0.7s;
+        }
+
+        .after::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            background: linear-gradient(#673ab700, #101425ed);
+            left: 0;
+            height: 100%;
+            border-radius: 10px;
+            transition: 0.7s;
+            opacity: 1;
+        }
+
+        .after:hover::after {
+            content: "";
+            opacity: 1;
+        }
+
+        .text {
+            position: absolute;
+            color: rgb(255 255 255);
+            text-transform: uppercase;
+            z-index: 1;
+            left: 25px;
+            bottom: 20px;
+        }
+
+        .titleBtn {
+            margin: 40px 0;
+        }
+
+        .box:hover img {
+            transform: scale(1.1);
+        }
+
+        /*  */
+        header {
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin-bottom: 50px;
+        }
+
+        .header {
+            position: relative;
+            z-index: 2;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 30px 0;
+        }
+
+        nav a {
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            padding: 10px 0;
+            position: relative;
+            transition: 0.7s;
+            display: block;
+        }
+
+        nav a::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            z-index: 11;
+            left: 0;
+            height: 2px;
+            transition: 0.7s;
+            background-color: #2c28ff;
+            width: 100%;
+            opacity: 0;
+
+
+        }
+
+        nav a:hover::after {
+            opacity: 1;
+        }
+
+        /*  */
+        section {
+            position: absolute;
+            z-index: 1;
+        }
+
+        .after span {
+            position: absolute;
+            z-index: 1;
+            background: #0000008f;
+            /* left: 0; */
+            z-index: 22;
+            color: white;
+            top: 10px;
+            padding: 5px;
+            border-radius: 5px;
+            font-size: 12px;
+            right: 30px;
+        }
+
+        /* .after::after {
+            content: "";
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background: black;
+            z-index: 1;
+            left: 0;
+            bottom: 0;
+        } */
+
+        .active {
+            color: white;
+            padding: 10px;
+            font-size: 25px;
+        }
+
+        /* моб версия */
+        @media screen and (max-width:980px) {
+            nav {
+                display: block;
+            }
+
+            .btn {
+                flex-direction: column;
+            }
+
+            .btn button {
+                padding: 15px 20px !important;
+            }
+        }
+
+        /*  */
+        .burger {
+            display: block;
+            position: relative;
+        }
+
+        .burger span {
+            height: 2px;
+            width: 20px;
+            background: white;
+            display: block;
+            margin: 6px 0;
+        }
+
+        .left-burder {
+            animation: name 2s;
+        }
+
+        .rid-burder {
+            animation: nic 2s;
+        }
+
+        @keyframes nic {
+            0% {
+                transform: rotate(0);
+                position: absolute;
+            }
+
+            100% {
+                transform: rotate(-45deg);
+                position: absolute;
+            }
+        }
+
+        @keyframes name {
+            0% {
+                transform: rotate(0);
+                position: absolute;
+            }
+
+            100% {
+                transform: rotate(45deg);
+                position: absolute;
+            }
+        }
+
+        /*  */
+        button {
+            border-radius: 10px;
+            font-family: sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            box-sizing: border-box;
+            background: rgb(192 183 183 / 22%);
+            border: none;
+            padding: 10px 20px;
+            color: rgb(99 102 113);
+        }
+
+        button:hover {
+            background: rgb(33 136 255 / 22%);
+            color: rgb(24 118 216);
+            cursor: pointer;
+        }
+
+        .btn {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-active {
+            background: rgb(33 136 255 / 22%);
+            color: rgb(24 118 216);
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .menu {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .menu a {
+            border-radius: 10px;
+            box-sizing: border-box;
+            text-decoration: none;
+            background: rgb(192 183 183 / 22%);
+            border: none;
+            padding: 10px 20px;
+            color: rgb(99 102 113);
+        }
+
+        .menu a:hover {
+            background: rgb(255 126 83 / 22%);
+            border: none;
+            padding: 10px 20px;
+            color: rgb(234 4 4 / 65%);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="header">
+                <nav>
+                    <a href="">Главная</a>
+                    <a href="">Сведения об образовательной организации</a>
+                    <a href="">Студенту</a>
+                    <a href="">Преподавателю</a>
+                    <a href="">Абитуриенту</a>
+                    <a href="">Галерия</a>
+                </nav>
+                <img src="./Без-имени-3.gif" alt="">
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <div class="btn">
+                <button class="btn-main btn-active">Новости</button>
+                <button class="btn-main">Меню</button>
+                <button class="btn-main">Архив записей</button>
+            </div>
+
+            <div class="wrap-block">
+                <div class="titleBtn">
+                    <h1>Новости</h1>
+                </div>
+                <div class="news">
+                    <a class="box" href="">
+                        <div class="after">
+                            <img src="./xri8z2iGLvE.jpg" alt="">
+                            <span>26.01.2022</span>
+                        </div>
+                        <span class="text">Текст</span>
+                    </a>
+                    <a class="box" href="">
+                        <div class="after">
+                            <img src="./xri8z2iGLvE.jpg" alt="">
+                            <span>26.01.2022</span>
+                        </div>
+                        <span class="text">Текст</span>
+                    </a>
+                    <a class="box" href="">
+                        <div class="after">
+                            <img src="./xri8z2iGLvE.jpg" alt="">
+                            <span>26.01.2022</span>
+                        </div>
+                        <span class="text">Текст</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="wrap-block hide">
+                <div class="titleBtn">
+                    <h1>Меню</h1>
+                </div>
+                <div class="menu">
+                    <a href="">ДИСТАНЦИОННОЕ ОБУЧЕНИЕ</a>
+                    <a href="">Лицензия и аккредитация</a>
+                    <a href="">Координаты и реквизиты</a>
+                    <a href="">Заочное отделение</a>
+                    <a href="">Электронные образовательные ресурсы</a>
+                    <a href="">Преподавателю</a>
+                    <a href="">Абитуриенту</a>
+                    <a href="">Галерия</a>
+                </div>
+            </div>
+
+            <div class="wrap-block hide">
+                <div class="titleBtn">
+                    <h1>Архив</h1>
+                </div>
+            </div>
+
+        </div>
+    </main>
+    <script src="./index.js"></script>
+</body>
+
+</html>
